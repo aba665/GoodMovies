@@ -1,5 +1,5 @@
 import './App.css';
-import MyTest from './Components/welcome';
+import MyTest from './components/BoasVindas/welcome';
 
 function App() {
   return (
