@@ -4,8 +4,9 @@
   box-sizing: border-box;
 }
 body {
-  background: #4f75c7;
+  width: 100%;
+  background: #d34a21;
   font-family: monospace;
+   
 }
-
 
