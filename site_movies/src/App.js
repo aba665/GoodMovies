@@ -3,6 +3,7 @@ import './App.css';
 import HomePage from './pages/HomePage/index';
 import LoginPage from './pages/LoginPage/index';
 import RegisterPage from './pages/RegisterPage/index'; 
+import UserPage from './pages/UserPage/UserPage';
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
       <header className="App-header">
         {/* <HomePage /> */}
         {/* <LoginPage /> */}
-        <RegisterPage />
+        {/* <RegisterPage /> */}
+        <UserPage />
       </header>
     </div>
   );
