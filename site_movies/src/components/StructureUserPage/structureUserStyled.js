@@ -64,10 +64,22 @@ export const CARD_SUGEST = styled.section`
     width: 15%;
     background: #fff;
 
-    ol li{
+    ul li{
         margin: 4px 0;
         padding: 10px;
-        border-bottom: 3px solid #333;
+        background: #333;
+        border: 3px solid #fff;
+        list-style: none;
+        color: white;
+    }
+    li h3{
+       font-size: 15px;
+       text-align: center;
+       width: 80%;
+       margin: auto;
+    }
+    &:hover li{
+        cursor: pointer;
     }
 `
 export const CARD_TOP_MOVIES = styled.section`
@@ -80,21 +92,47 @@ export const CARD_TOP_MOVIES = styled.section`
     h2{
         text-align: center;
     }
+    
 `
 export const CONTAINER_MOVIES = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 
     div{
         width: 30%;
         padding: 10px;
+    } 
+    img{
+        width: 100%;
+        height: 50%;
     }
-    div img{
-        width: 15vw;
-        height: 15vw;
+    div p{
+        
+    }
+    button{
+        padding: 3px;
+        border-radius: 2px;
+        background: #333;
+        color: white;
+    }
+    &:hover button{
+        cursor: pointer;
     }
 `
+export const BOX_TEXT = styled.div`
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-self: flex-start;
+    
+
+    div{
+        width: 100%;
+    }
+`
+
 export const SUB_CATEGORY = styled.div`
     display: flex;
     flex-direction: column;

@@ -1,3 +1,4 @@
+
 //Utilização do styled-components
 import { Container } from './indexStyled';
 //Importações de componentes
@@ -6,6 +7,8 @@ import CarroselComponent from '../../components/Carrosel/carrosel';
 import RodapeCreation from '../../components/Rodape/rodapeHome';
 
 function homePage(){
+
+    
     return (
         <div>
             <NavBar />
