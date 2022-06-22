@@ -147,3 +147,65 @@ export const SUB_CATEGORY = styled.div`
         margin: 20px auto;
     }
 `
+export const CATEGORY_OPTIONS = styled.li`
+
+    ul{
+        display: none;
+        position: absolute;
+        top: 66px;
+        left: 45%;
+        background-color: #333;
+        text-align: center;
+        width: 10%;
+        height: 150px;
+        transition: 1.2s ease-in;
+    }
+    &:hover ul{
+        display: block;
+    }
+    ul li{
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+        color: #fff;
+    }
+    &:hover ul li{
+        cursor: pointer;
+        background-color: #fff;
+        color: #333;
+    }
+
+`
+export const CONFIG_OPTIONS = styled.li`
+
+
+    ul{
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 50%;
+        background-color: #333;
+        text-align: center;
+        width: 25%;
+        height: 150px;
+        transition: 1.2s ease-in;
+    }
+
+    &:hover ul{
+        display: block;   
+    }
+
+    ul li{
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+        color: #fff;
+        background-color: #fff;
+    }
+
+    &:hover ul li{
+        cursor: pointer;
+        color: #333;
+        background: #fff;
+    }
+`

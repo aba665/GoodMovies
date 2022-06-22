@@ -12,32 +12,38 @@ function rodapeCreation(){
         <h2>Contatos</h2>
         <Box> 
             <table>
-                <tr>
-                    <td>
-                        Email:
-                    </td>
-                    <td>
-                        Instagram:
-                    </td>
-                    <td>
-                        Whatsapp:
-                    </td>
-                    <td>
-                        Facebook:
-                    </td>
-                </tr>
-                <tr>
-                    <td>Moviessuporte@gmail.com</td>
-                    <td>@M°°vies</td>
-                    <td>(99) 9 9999-9999</td>
-                    <td>M°°vies</td>
-                </tr>
-                <tr>
-                    <td><ContentImg src={logoEm} alt="Email" /></td>
-                    <td><ContentImg src={logoWz} alt="Whatsapp" /></td>
-                    <td> <ContentImg src={logoIst} alt="Instagram" /></td>
-                    <td><ContentImg src={logoFb} alt="Facebook" /></td>
-                </tr>
+                <thead>
+
+                    <tr>
+                        <td>
+                            Email:
+                        </td>
+                        <td>
+                            Instagram:
+                        </td>
+                        <td>
+                            Whatsapp:
+                        </td>
+                        <td>
+                            Facebook:
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Moviessuporte@gmail.com</td>
+                        <td>@M°°vies</td>
+                        <td>(99) 9 9999-9999</td>
+                        <td>M°°vies</td>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td><ContentImg src={logoEm} alt="Email" /></td>
+                        <td><ContentImg src={logoWz} alt="Whatsapp" /></td>
+                        <td> <ContentImg src={logoIst} alt="Instagram" /></td>
+                        <td><ContentImg src={logoFb} alt="Facebook" /></td>
+                    </tr>
+
+                </tfoot>
             </table>
         </Box>
     </Container>  

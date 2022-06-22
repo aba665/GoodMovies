@@ -1,9 +1,9 @@
-import style from 'styled-components';
+import styled from 'styled-components';
 
-export const Container = style.div`
+export const Container = styled.div`
     
     width: 100%;
-    min-height: 3.5rem;
+    min-height: 3.7rem;
     background: #fff;
     display: flex;
     justify-content: space-between;
@@ -19,10 +19,18 @@ export const Container = style.div`
     li{
         list-style: none;
         padding: 0 6px;
+        
     }
+   
     a{
         color: black;
         font-size: 1.1rem;
         text-decoration: none;
+    }
+`
+export const LITTLE_DETAIL = styled.li`
+   font-size: 1.3rem;
+   &:hover{
+        font-weight: 600;
     }
 `

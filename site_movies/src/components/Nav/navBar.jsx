@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 //Utilização do styled-components
-import { Container } from "./navStyle";
+import { Container, LITTLE_DETAIL } from "./navStyle";
 
 function navBar(){
    
@@ -8,9 +8,9 @@ function navBar(){
             <Container>
                 <h2>M°°vies</h2>
                 <ul>
-                    <li><a href="#"><Link to='/'>Home</Link></a></li>
-                    <li><a href="#"><Link to='/login'>Login</Link></a></li>
-                    <li><a href="#"><Link to='/cadastro'>Cadastro</Link></a></li>
+                    <LITTLE_DETAIL><Link to='/'>Home</Link></LITTLE_DETAIL>
+                    <LITTLE_DETAIL><Link to='/login'>Login</Link></LITTLE_DETAIL>
+                    <LITTLE_DETAIL><Link to='/cadastro'>Cadastro</Link></LITTLE_DETAIL>
                 </ul>            
             </Container>
     )

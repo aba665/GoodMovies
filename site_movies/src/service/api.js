@@ -1,6 +1,7 @@
-export const API = 'http://localhost:5000';
+import config from "../config/apiConfig";
+export const API = config.api;
 
-//Função de criação de usuário
+//Função de criação de usuário e retorna a confirmação se o usuário foi criado ou não.
 export const createUser = async (email, password, name, nickname, age) => {
     let dataReceive;    
     let user = {
@@ -22,14 +23,11 @@ export const createUser = async (email, password, name, nickname, age) => {
         dataReceive = doc.redirection;
     })
    
-    
+   return dataReceive; 
 };
-
+//Função de login e autenticação
 export function useLoginUser(email, password, token, setToken, setUserVerificated){
-    console.log('fetch do login 1')
-    console.log(email, password, token);
     token = localStorage.getItem('Token');
-    console.log("novo valor", token)
     if(password.length < 4){
         return alert('Erro! Password deve conter mais de 4 caracteres!')
     }
@@ -39,7 +37,6 @@ export function useLoginUser(email, password, token, setToken, setUserVerificate
     }else{
         
         const LoginUser = async () => {
-            console.log('fetch do login 2')
             
             let user = {
                 email,
@@ -60,8 +57,6 @@ export function useLoginUser(email, password, token, setToken, setUserVerificate
                 'Authorization': token
             });
             
-            console.log('cabeçalho', myHeaders);
-    
             const OPTIONS = {
                 method: "POST",
                 headers: myHeaders,
@@ -73,10 +68,9 @@ export function useLoginUser(email, password, token, setToken, setUserVerificate
                     return data.json();
                 }).then((doc) => {
                 
-                console.log(doc);
                 setterToken(doc);
                 setterUserVerificated(doc);
-                localStorage.setItem('Usuario', JSON.stringify({id: doc.user.id, email: doc.user.email}));
+                localStorage.setItem('Usuario', JSON.stringify({id: doc.user.id, email: doc.user.email, nickname: doc.user.nickname}));
                 localStorage.setItem('Token', doc.token);
                 
                 if(doc.token){
@@ -94,19 +88,29 @@ export function useLoginUser(email, password, token, setToken, setUserVerificate
     }
     
 }
-//Pega os alguns dados do usuário e filmes
-export function getData(){
-    let user = 'Abisson Santos';
+//Pega os alguns dados do usuário e filmes favoritos do usuário
+export async function getData(){
+    let user;
+    let fullUser = JSON.parse(localStorage.getItem('Usuario'));
+    let token = localStorage.getItem('Token');
 
-    // fetch(API + '/data', OPTIONS).then(data => {
-    //     return data.json();
-    // }).then(
-    //     user = doc.user.sobrenome
-    // )
+   const OPTIONS = {
+        method: "POST",
+        headers: new Headers({'content-type':  'application/json'}),
+        body: JSON.stringify(
+                {
+                    email: fullUser.email,
+                    Authorization: token
+                }
+            )
+    }
+
+    await fetch(API + '/data', OPTIONS).then(data => {
+        return data.json();
+    }).then((doc) => {
+            user = doc.nickname
+    })
+    
     return user;
 
 }
-
-
-
-

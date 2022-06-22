@@ -34,25 +34,25 @@ export const CONTENT = styled.div`
         padding: 8px;
         border: outset;
         outline: 0;
-        background: #d34a21;
+        background: #333;
         color: #fff;
     
         ::-webkit-inner-spin-button { -webkit-appearance: none;}
-        ::-webkit-input-placeholder { color: black; }
-        :-moz-placeholder { color: black; }
-        ::-moz-placeholder { color: black; } 
-        :-ms-input-placeholder { color: black; } 
+        ::-webkit-input-placeholder { color: white; }
+        :-moz-placeholder { color: white; }
+        ::-moz-placeholder { color: white; } 
+        :-ms-input-placeholder { color: white; } 
     }
     button{
         margin: 10px 0;
         padding: 8px 15px;
-        color: rgb(10, 10, 10);
-        background-color: #d34a21;
+        color: #fff;
+        background-color: #333;
         border-radius: 4px;
         
         &:hover{
             cursor: pointer;
-            background-color: #d35b25;
+            background-color: #322;
         }
     }
     

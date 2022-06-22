@@ -10,10 +10,9 @@ function StructerLogin(){
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
     const path = useNavigate();
-    console.log("Usuário verificado = ", userVerificated);
 
-    async function CheckLogin(){
-        await useLoginUser(email, password, token, setToken, setUserVerificated);
+    function CheckLogin(){
+         useLoginUser(email, password, token, setToken, setUserVerificated);
         
     }
 

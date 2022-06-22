@@ -42,7 +42,7 @@ function StructureRegister(){
     }
 
     if(redirection){
-        return <ReturnLogin />
+        return path('/login');
     }
     
     return (

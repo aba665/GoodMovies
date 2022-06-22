@@ -1,30 +1,41 @@
-import { BOXUSER, BOX_MENU, BOX_TEXT, CARD_SUGEST, CARD_TOP_MOVIES, CONTAINER_MOVIES, HEADER, MAIN, NAME_USER, SUB_CATEGORY } from "./structureUserStyled";
-
 import imgUser from './img/round-account-button-with-user-inside_icon-icons.com_72596.png'
 import { useEffect, useState } from "react";
-import { getData } from "../../service/api";
-import { NewFilms, PopularFilms, Recomendations, TopFilms } from "../../controllers/userPageRequest";
-import { Link } from 'react-router-dom';
+import { LogOut, NewFilms, PopularFilms, Recomendations, TopFilms } from "../../controllers/userPageRequest";
+import { useNavigate } from 'react-router-dom';
+
+// import { Link } from 'react-router-dom';
 // import config from '../../config/apiConfig';
+
+import { BOXUSER,
+        BOX_MENU,
+        BOX_TEXT, 
+        CARD_SUGEST, 
+        CARD_TOP_MOVIES, 
+        CATEGORY_OPTIONS, 
+        CONFIG_OPTIONS, 
+        CONTAINER_MOVIES, 
+        HEADER, 
+        MAIN, 
+        NAME_USER, 
+        SUB_CATEGORY } from "./structureUserStyled";
 
 function StructureUserPage(){
     
-    const [ user, setUser ] = useState('');
+    const user  = JSON.parse(localStorage.getItem('Usuario'));
+    const userName = user.nickname.split('"');
     const [ topFilms, setTopFilms ] = useState([]);
     const [ popularFilms, setPopularFilms ] = useState([]);
     const [ newFilms, setNewFilms ] = useState([]);
     const [ recomendation, setRecomendation ] = useState([]);
-    
+    const PATH = useNavigate();    
 
-    function handleData(){
-        let dataUser = getData()
-        if(dataUser){
-            setUser(dataUser);
-            
-        }
+    function handleLog(){
+        LogOut();
+
+        return PATH('/')
     }
+    
     useEffect(() => {
-        handleData();
         TopFilms(setTopFilms);
         PopularFilms(setPopularFilms);
         NewFilms(setNewFilms);
@@ -42,7 +53,7 @@ function StructureUserPage(){
                                 
                             </li>
                             <NAME_USER>
-                                 {user}
+                                <p>{userName}</p>
                             </NAME_USER>
                         </ul>
                         
@@ -52,9 +63,21 @@ function StructureUserPage(){
                             <li>
                                 <a href="#">Favoritos</a>
                             </li>
-                            <li>Categorias</li>
-                            <li>Configurações</li>
-                            <li>Sair</li>
+                                <CATEGORY_OPTIONS>Categorias
+                                    <ul>
+                                        <li>Ação</li>
+                                        <li>Comédia</li>
+                                        <li>Terror</li>
+                                        <li>Romance</li>
+                                    </ul>
+                            </CATEGORY_OPTIONS>
+                            <CONFIG_OPTIONS>Configurações
+                                <ul>
+                                    <li>Editar Usuário</li>
+                                    <li>Excluir Usuário</li>
+                                </ul>
+                            </CONFIG_OPTIONS>
+                            <li onClick={handleLog}>Sair</li>
                         </ul>
                     </BOX_MENU>
                     <h1>M°°vies</h1>

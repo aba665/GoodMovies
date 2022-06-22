@@ -16,9 +16,8 @@ function homePage(){
             <Container>
                 <h2>Sobre:</h2>
                 <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt, rerum non! Qui ipsam debitis, deleniti itaque architecto dolores eos dignissimos. Commodi enim voluptatum aspernatur natus praesentium! Perspiciatis nisi doloremque beatae.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam consequatur, explicabo adipisci porro, blanditiis nemo, vero illo est dignissimos mollitia fuga animi nisi eos esse modi nam error minima reiciendis.
-                    
+                    O site Good Movies tem por objetivo a criação de uma página onde o usuário possa ver detalhes sobre algum filme, ver recomendações de filmes, filmes que estão prestes a lançar e muito mais.
+                    Além de favoritar seu filmes preferidos, pode fazer busca por determinado filme. 
                 </p>
             </Container>
             <RodapeCreation />
