@@ -1,1 +1,1 @@
-let: string = "Sabor"
+let sabor: string = "Chocolate"
