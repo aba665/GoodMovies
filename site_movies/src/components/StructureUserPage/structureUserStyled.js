@@ -12,6 +12,19 @@ export const HEADER = styled.header`
     &:hover li{
         cursor: pointer;
     }
+    @media(max-width:670px){
+        display: block;
+        h1{display: none;}
+        ul li{
+            display: block;
+            width: 95%;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+
+    }
 `
 export const NAME_USER = styled.li`
     height: 100%;
@@ -81,6 +94,9 @@ export const CARD_SUGEST = styled.section`
     &:hover li{
         cursor: pointer;
     }
+    @media(max-width: 916px){
+      display: none;
+    }
 `
 export const CARD_TOP_MOVIES = styled.section`
     display: flex;
@@ -91,6 +107,22 @@ export const CARD_TOP_MOVIES = styled.section`
 
     h2{
         text-align: center;
+        margin: 3px 0;
+    }
+
+    button{
+        padding: 3px;
+        border-radius: 2px;
+        background: #333;
+        color: white;
+    }
+    &:hover button{
+        cursor: pointer;
+    }
+
+    img{
+        width: 300px;
+        height: 350px;
     }
     
 `
@@ -120,40 +152,42 @@ export const CONTAINER_MOVIES = styled.div`
         cursor: pointer;
     }
 `
-export const BOX_TEXT = styled.div`
-   
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-self: flex-start;
-    
-
-    div{
-        width: 100%;
-    }
-`
-
 export const SUB_CATEGORY = styled.div`
     display: flex;
     flex-direction: column;
-
     h2{
         text-align: center;
+        margin: 5px 0;
     }
     section{
         
-        width: 95%;
+        width: 90%;
         background-color: #fff;
         margin: 20px auto;
     }
+    section img{
+        width: 350px;
+        height: 300px;
+    }
+    section button{
+        padding: 3px;
+        border-radius: 2px;
+        background: #333;
+        color: white;
+    }
+    &:hover section button{
+        cursor: pointer;
+    }
+    
+
 `
 export const CATEGORY_OPTIONS = styled.li`
 
     ul{
         display: none;
         position: absolute;
-        top: 66px;
-        left: 45%;
+        top: 58px;
+        left: 40%;
         background-color: #333;
         text-align: center;
         width: 10%;
@@ -174,7 +208,16 @@ export const CATEGORY_OPTIONS = styled.li`
         background-color: #fff;
         color: #333;
     }
-
+    @media(max-width:670px){
+       ul{ 
+        position: relative;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background: #fff;
+        height: 50px;
+    }
+    }
 `
 export const CONFIG_OPTIONS = styled.li`
 
@@ -182,7 +225,7 @@ export const CONFIG_OPTIONS = styled.li`
     ul{
         display: none;
         position: absolute;
-        top: 64px;
+        top: 58px;
         left: 50%;
         background-color: #333;
         text-align: center;
@@ -208,4 +251,14 @@ export const CONFIG_OPTIONS = styled.li`
         color: #333;
         background: #fff;
     }
+    @media(max-width:670px){
+       ul{ 
+        position: relative;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background: #fff;
+        height: 50px;
+    }
+}
 `

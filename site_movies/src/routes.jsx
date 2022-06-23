@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { BrowserRouter, Route, Routes, useNavigate, Navigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 //Importação de todo contexto
 import { AuthContext, AuthProvider } from './context/validateTokenContext';
 //Importações das páginas

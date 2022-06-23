@@ -2,18 +2,17 @@ import imgUser from './img/round-account-button-with-user-inside_icon-icons.com_
 import { useEffect, useState } from "react";
 import { LogOut, NewFilms, PopularFilms, Recomendations, TopFilms } from "../../controllers/userPageRequest";
 import { useNavigate } from 'react-router-dom';
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.min.css';
+import 'owl.carousel/dist/assets/owl.theme.default.min.css';
 
-// import { Link } from 'react-router-dom';
-// import config from '../../config/apiConfig';
 
 import { BOXUSER,
         BOX_MENU,
-        BOX_TEXT, 
         CARD_SUGEST, 
         CARD_TOP_MOVIES, 
         CATEGORY_OPTIONS, 
-        CONFIG_OPTIONS, 
-        CONTAINER_MOVIES, 
+        CONFIG_OPTIONS,  
         HEADER, 
         MAIN, 
         NAME_USER, 
@@ -29,10 +28,33 @@ function StructureUserPage(){
     const [ recomendation, setRecomendation ] = useState([]);
     const PATH = useNavigate();    
 
+    const options = {
+        responsive: {
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:5
+            },
+        },
+        responsiveTwo: {
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+        }
+    }
+    };
+
     function handleLog(){
         LogOut();
 
-        return PATH('/')
+        PATH('/')
+        
     }
     
     useEffect(() => {
@@ -63,13 +85,11 @@ function StructureUserPage(){
                             <li>
                                 <a href="#">Favoritos</a>
                             </li>
-                                <CATEGORY_OPTIONS>Categorias
-                                    <ul>
-                                        <li>Ação</li>
-                                        <li>Comédia</li>
-                                        <li>Terror</li>
-                                        <li>Romance</li>
-                                    </ul>
+                            <CATEGORY_OPTIONS>Categorias
+                                <ul>
+                                    <li>Ação</li>
+                                    <li>Terror</li>
+                                </ul>
                             </CATEGORY_OPTIONS>
                             <CONFIG_OPTIONS>Configurações
                                 <ul>
@@ -97,68 +117,90 @@ function StructureUserPage(){
                     </CARD_SUGEST>
                     <CARD_TOP_MOVIES>
                         <h2>Top 3</h2>
+                        {topFilms && (
 
-                        <CONTAINER_MOVIES>
-                            {topFilms && topFilms.map((item, index) => {
+                            <OwlCarousel
+                            className='owl-theme'
+                            responsive={options.responsiveTwo}
+                            margin={2}
+                            nav
+                            dots
+                            loop
+                            >
+                             {topFilms.map((item, index) => {
                                 if(index < 3){
-                                   return <BOX_TEXT key={item.popularity}>
-                                        <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
-                                        <div>
-                                            <h3>{item.title}</h3>
-                                            <p>Popularidade: {item.popularity}</p>
-                                            <p>{item.overview}</p>
-                                            <button onClick={()=>{}}>Favoritar</button>
-                                        </div>
-                                    </BOX_TEXT>   
+                                   return <div key={item.popularity}>
+                                            <div className='item'>
+                                                <img className="box-film" src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
+                                                <h3>{item.title}</h3>
+                                                <p>Popularidade: {item.popularity}</p>
+                                                <p>{item.overview}</p>
+                                                <button onClick={()=>{}}>Favoritar</button>
+
+                                            </div>
+                                        </div>   
 
                                 }
                             })}
-                        </CONTAINER_MOVIES>
+                        </OwlCarousel>
+    )}
                     </CARD_TOP_MOVIES>
                 </MAIN>
     
                 <SUB_CATEGORY>
                     <section>
-                        <h2>Filmes Populares</h2>
-                        <CONTAINER_MOVIES>
-                        {popularFilms && popularFilms.map((item, index) => {
-                                if(index < 5){
-                                   return <BOX_TEXT key={item.popularity}>
-                                        <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
-                                       
-                                       <div>
-                                            <h3>{item.title}</h3>
-                                            <p>Popularidade: {item.popularity}</p>
-                                            <p>{item.overview}</p>
-                                            <button onClick={()=>{}}>Favoritar</button>
-                                       </div>
-                                    </BOX_TEXT>   
-
-                                }
-                            })}
-                        </CONTAINER_MOVIES>
-                    </section>
-
-                    <section>
-                        <h2>Lançamentos</h2>
-                        <CONTAINER_MOVIES>
-                        {newFilms && newFilms.map((item, index) => {
-                                if(index < 5){
-                                   return <BOX_TEXT key={item.popularity}>
-                                        <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
-                                        
-                                        <div>
+                    <h2>Filmes de Ação</h2>
+                    {popularFilms && (
+                        <OwlCarousel
+                            className='owl-theme'
+                            responsive={options.responsive}
+                            margin={2}
+                            autoplay
+                            nav
+                            dots
+                            loop
+                            >
+                             {popularFilms.map((item, index) => {
+                                    if(index < 5){
+                                    return <div key={item.popularity}>
+                                            <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
                                             <h3>{item.title}</h3>
                                             <p>Popularidade: {item.popularity}</p>
                                             <p>{item.overview}</p>
                                             <button onClick={()=>{}}>Favoritar</button>
                                         </div>
-                                    </BOX_TEXT>   
+                                    }
+                                })}
+                            </OwlCarousel>
+                    )}
+                    </section>
 
-                                }
-                            })}
-                           
-                        </CONTAINER_MOVIES>
+                    <section>
+                        <h2>Lançamentos</h2>
+                        {newFilms && (
+                            
+                            <OwlCarousel
+                            className='owl-theme'
+                            responsive={options.responsive}
+                            margin={2}
+                            nav
+                            dots
+                            loop
+                            >
+                                    
+                                    {newFilms.map((item, index) => {
+                                            if(index < 5){
+                                            return <div key={item.popularity}>
+                                                        <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
+                                                        <h3>{item.title}</h3>
+                                                        <p>Popularidade: {item.popularity}</p>
+                                                        <p>{item.overview}</p>
+                                                        <button onClick={()=>{}}>Favoritar</button>
+                                                    </div>
+                                            }
+                                        })}
+                            </OwlCarousel>
+                        )}
                     </section>
                 </SUB_CATEGORY>
             </div>

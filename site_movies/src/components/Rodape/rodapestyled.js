@@ -6,6 +6,10 @@ export const Container = styled.footer`
     background-color: #fff;
     text-align: center;
 
+    @media(max-width:670px){
+       display: none;
+    }
+
 `
 export const Box = styled.div`
     margin: auto;

@@ -18,6 +18,7 @@ function homePage(){
                 <p>
                     O site Good Movies tem por objetivo a criação de uma página onde o usuário possa ver detalhes sobre algum filme, ver recomendações de filmes, filmes que estão prestes a lançar e muito mais.
                     Além de favoritar seu filmes preferidos, pode fazer busca por determinado filme. 
+                    Observação: Essa é uma página de fins educativos para o criador. 
                 </p>
             </Container>
             <RodapeCreation />
