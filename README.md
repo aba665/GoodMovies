@@ -1,4 +1,4 @@
-# Portfólio 📰
+# GoodMovies Site Portfólio 📰
 
 ## Intuito do projeto
 
