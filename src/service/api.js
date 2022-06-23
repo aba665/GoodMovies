@@ -17,7 +17,7 @@ export const createUser = async (email, password, name, nickname, age) => {
         body: JSON.stringify(user)
     }
 
-    fetch(API + '/newUser', OPTIONS).then(data => {
+    fetch(API + 'newUser', OPTIONS).then(data => {
         return data.json();
     }).then((doc) => {
         dataReceive = doc.redirection;
@@ -64,7 +64,7 @@ export function useLoginUser(email, password, token, setToken, setUserVerificate
             }
         
         
-            return fetch(API + '/user/login', OPTIONS).then(data => {
+            return fetch(API + 'user/login', OPTIONS).then(data => {
                     return data.json();
                 }).then((doc) => {
                 
@@ -105,7 +105,7 @@ export async function getData(){
             )
     }
 
-    await fetch(API + '/data', OPTIONS).then(data => {
+    await fetch(API + 'data', OPTIONS).then(data => {
         return data.json();
     }).then((doc) => {
             user = doc.nickname
