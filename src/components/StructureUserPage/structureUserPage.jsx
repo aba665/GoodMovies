@@ -2,26 +2,31 @@ import imgUser from './img/round-account-button-with-user-inside_icon-icons.com_
 import { useEffect, useState } from "react";
 import { LogOut, NewFilms, PopularFilms, Recomendations, TopFilms } from "../../controllers/userPageRequest";
 import { useNavigate } from 'react-router-dom';
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.min.css';
-import 'owl.carousel/dist/assets/owl.theme.default.min.css';
+// import OwlCarousel from 'react-owl-carousel';
+// import 'owl.carousel/dist/assets/owl.carousel.min.css';
+// import 'owl.carousel/dist/assets/owl.theme.default.min.css';
+import './styleUser.css';
+import './index.js';
+import arrowBack from './img/setaVolta.png';
+import arrowForward from './img/setaFrente.png';
 
 
-import { BOXUSER,
+
+import {
+        BOXUSER,
         BOX_MENU,
-        CARD_SUGEST, 
-        CARD_TOP_MOVIES, 
+        CARD_SUGEST,  
         CATEGORY_OPTIONS, 
-        CONFIG_OPTIONS,  
+        CONFIG_OPTIONS,    
         HEADER, 
         MAIN, 
         NAME_USER, 
-        SUB_CATEGORY } from "./structureUserStyled";
+        } from "./structureUserStyled";
 
 function StructureUserPage(){
     
-    const user  = JSON.parse(localStorage.getItem('Usuario'));
-    const userName = user.nickname.split('"');
+    // const user  = JSON.parse(localStorage.getItem('Usuario'));
+    // const userName = user.nickname.split('"');
     const [ topFilms, setTopFilms ] = useState([]);
     const [ popularFilms, setPopularFilms ] = useState([]);
     const [ newFilms, setNewFilms ] = useState([]);
@@ -75,7 +80,8 @@ function StructureUserPage(){
                                 
                             </li>
                             <NAME_USER>
-                                <p>{userName}</p>
+                                joão
+                                {/* <p>{userName}</p> */}
                             </NAME_USER>
                         </ul>
                         
@@ -103,106 +109,96 @@ function StructureUserPage(){
                     <h1>M°°vies</h1>
                 </HEADER>
                 <MAIN>
+
                     <CARD_SUGEST>
                         <h2>Sugestões</h2>
                         <ul>
                         {recomendation && recomendation.map((item, index) => {
-                                if(index < 10){
-                                   return <div key={item.id}>
+                            if(index < 10){
+                                return <div key={item.id}>
                                         <li id={item.id}><h3>{item.title}</h3></li>
                                     </div>   
-
-                                }})}
+                        }})}
                         </ul>
-                    </CARD_SUGEST>
-                    <CARD_TOP_MOVIES>
-                        <h2>Top 3</h2>
-                        {topFilms && (
-
-                            <OwlCarousel
-                            className='owl-theme'
-                            responsive={options.responsiveTwo}
-                            margin={2}
-                            nav
-                            dots
-                            loop
-                            >
-                             {topFilms.map((item, index) => {
+                    </CARD_SUGEST>    
+                    <section className='cardTopMovies'>
+                       {topFilms && topFilms.map((item, index) => {
                                 if(index < 3){
-                                   return <div key={item.popularity}>
-                                            <div className='item'>
-                                                <img className="box-film" src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
+                                   return <div  className="contetTopMovie" key={item.popularity}>
+                                            
+                                                <img className="itemFirst" src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
                                                 <h3>{item.title}</h3>
                                                 <p>Popularidade: {item.popularity}</p>
                                                 <p>{item.overview}</p>
                                                 <button onClick={()=>{}}>Favoritar</button>
 
-                                            </div>
+                                            
                                         </div>   
 
                                 }
-                            })}
-                        </OwlCarousel>
-    )}
-                    </CARD_TOP_MOVIES>
+                            })} 
+                           
+                    </section>    
                 </MAIN>
-    
-                <SUB_CATEGORY>
-                    <section>
-                    <h2>Filmes de Ação</h2>
-                    {popularFilms && (
-                        <OwlCarousel
-                            className='owl-theme'
-                            responsive={options.responsive}
-                            margin={2}
-                            autoplay
-                            nav
-                            dots
-                            loop
-                            >
-                             {popularFilms.map((item, index) => {
-                                    if(index < 5){
+                 
+                <div className='subCategory'>
+                    <section className='cardActionMovies'>
+                    <h2 className="titleTopMovie">Filmes de ação</h2>
+                    
+                    
+                    <div className="container">
+                        <div className="gallery-wrapper">
+                            <button className="arrow-left controlTwo"><img src={arrowBack} alt="seta voltando" /></button>
+                            <div className="gallery">
+                                {popularFilms && popularFilms.map((item, index) => {
+                                    if(index < 20){
                                     return <div key={item.popularity}>
-                                            <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
+                                            <img className='itemTwo' src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
                                             <h3>{item.title}</h3>
                                             <p>Popularidade: {item.popularity}</p>
                                             <p>{item.overview}</p>
                                             <button onClick={()=>{}}>Favoritar</button>
                                         </div>
                                     }
-                                })}
-                            </OwlCarousel>
-                    )}
-                    </section>
+                                        })
+                                    }
+                            </div>
+                            <button className="arrow-right controlTwo"><img src={arrowForward} alt="seta para frente" /></button>
+                        </div>
+                    </div>
+                    
+                        </section>
+                    </div>
 
-                    <section>
-                        <h2>Lançamentos</h2>
-                        {newFilms && (
-                            
-                            <OwlCarousel
-                            className='owl-theme'
-                            responsive={options.responsive}
-                            margin={2}
-                            nav
-                            dots
-                            loop
-                            >
-                                    
-                                    {newFilms.map((item, index) => {
-                                            if(index < 5){
-                                            return <div key={item.popularity}>
-                                                        <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
+                <div className='subCategory'>
+                            <section className='cardActionMovies'>
+                            <h2 className="titleTopMovie">Lançamentos</h2>
+                            <div className='container'>
+                                <div className='gallery-wrapper'>
+                                    <button className='arrow-left control'>
+                                        <img src={arrowBack} alt="seta voltando" />
+                                    </button>
+                                    <div className='gallery'>
+                                        {newFilms && newFilms.map((item, index) => {
+                                            if(index < 20){
+                                            return <div className='selectionMovie' key={item.popularity}>
+                                                        <img className='item' src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
                                                         <h3>{item.title}</h3>
-                                                        <p>Popularidade: {item.popularity}</p>
+                                                        <p>Popularidade: {item.popularity}</ p>
                                                         <p>{item.overview}</p>
-                                                        <button onClick={()=>{}}>Favoritar</button>
+                                                        <button onClick={()=>{}}>Favoritar</    button>
                                                     </div>
                                             }
                                         })}
-                            </OwlCarousel>
-                        )}
-                    </section>
-                </SUB_CATEGORY>
+                                    </div>
+                                    <button className='arrow-right control'> 
+                                         <img src={arrowForward} alt="seta para frente" /> 
+                                    </button>
+                                </div>
+                            </div>  
+                        </section>
+                </div>
+                   
             </div>
         )    
 }

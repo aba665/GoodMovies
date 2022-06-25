@@ -1,0 +1,152 @@
+.cardTopMovies{
+    display: flex;
+    width: 78%;
+    padding: 10px;
+    box-shadow: 2px 2px 4px black;
+    
+}
+.contetTopMovie{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    
+}
+
+.titleTopMovie{
+    text-align: center;
+    color: aliceblue;
+}
+.containerMovies{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.contentTopmovies{
+    width: 30%;
+    padding: 10px;
+}
+.imgTopMovies{
+    width: 15vw;
+    height: 15vw;
+}
+.subCategory{
+    display: flex;
+    flex-direction: column;
+}
+.cardActionMovies{
+    width: 90%;
+    background: transparent;
+    /* background-color: #fff; */
+    margin: 20px auto;
+   
+}
+.cardHorrorMovies{
+    width: 95%;
+    background-color: #fff;
+    margin: 50px auto;
+}
+.container{
+    position: relative;
+    padding: 10px;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: #333;
+    color: #fff;
+    box-shadow: 2px 2px 5px black;
+    
+}
+.gallery-wrapper{
+    overflow-x: auto;
+}
+.gallery{
+   
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 15px;
+    
+}
+
+.arrow-left,
+.arrow-right{
+    position: absolute;
+    top: 75px;
+    left: 0;
+    right: auto;
+    bottom: 0;
+    border: none;
+    width: 60px;
+    background: linear-gradient(to left, transparent 5%, black 200%);
+    opacity: 0.6;
+    transition: all 600ms ease-in-out;
+    
+}
+
+.arrow-right{
+    left: auto;
+    right: 0;
+    
+    background: linear-gradient(to right, transparent 0%, black 200%);
+    
+}
+
+.arrow-left:hover{
+    opacity: 1;
+} 
+
+.arrow-right:hover{
+    opacity: 1;
+}
+
+.item{
+    width: 250px;
+    height: 250px;
+    flex-shrink: 0;
+    opacity: 0.7;
+    transition: all 600ms ease-in-out;
+
+}
+.itemFirst{
+    width: 250px;
+    height: 250px;
+    flex-shrink: 0;
+    opacity: 0.7;
+    transition: all 600ms ease-in-out;
+}
+.itemTwo{
+    width: 250px;
+    height: 250px;
+    flex-shrink: 0;
+    opacity: 0.7;
+    transition: all 600ms ease-in-out;
+}
+.current-item{
+    opacity: 1;
+}
+.gallery-wrapper::-webkit-scrollbar{
+    display: none;
+}
+.item:hover{
+    cursor: pointer;
+}
+
+@media(max-width: 996px){
+    .cardTopMovies{
+        flex-direction: column;
+        width: 90%;
+        padding: 5px;
+        
+    }
+   
+    /* item{
+        width: 200px;
+        height: 200px; 
+    } */
+    .itemFirst{
+        width: 200px;
+        height: 200px; 
+    }
+}

@@ -5,9 +5,12 @@
 }
 body {
   width: 100%;
-  /* background: #d34a21; */
   background: #333;
   font-family: monospace;
    
 }
-
+.backLogin, .backRegister{
+  background-image: url(./pages/LoginPage/CapaLogin2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}

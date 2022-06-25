@@ -12,6 +12,7 @@ export const CONTAINER = styled.div`
         text-align: center;
         font-size: 2.5rem;
     }
+
 `
 export const CONTENT = styled.div`
     width: 45%;
@@ -55,7 +56,8 @@ export const CONTENT = styled.div`
             background-color: #322;
         }
     }
-    
-
+    @media(max-width: 800px){
+        width: 80%;
+    }
 
 `

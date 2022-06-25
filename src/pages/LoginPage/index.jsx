@@ -2,7 +2,7 @@ import Login from "../../components/StructureLogin/structureLogin";
 
 function loginPage(){
     return (
-        <div>
+        <div className="backLogin">
             <Login />
         </div>
     )

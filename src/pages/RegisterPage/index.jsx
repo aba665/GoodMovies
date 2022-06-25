@@ -2,7 +2,7 @@ import Register from '../../components/StructureRegister/structureRegister';
 
 function registerPage(){
     return (
-        <div>
+        <div className='backRegister'>
             <Register />
         </div>
     )
