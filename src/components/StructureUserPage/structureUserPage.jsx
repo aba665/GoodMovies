@@ -2,9 +2,6 @@ import imgUser from './img/round-account-button-with-user-inside_icon-icons.com_
 import { useEffect, useState } from "react";
 import { LogOut, NewFilms, PopularFilms, Recomendations, TopFilms } from "../../controllers/userPageRequest";
 import { useNavigate } from 'react-router-dom';
-// import OwlCarousel from 'react-owl-carousel';
-// import 'owl.carousel/dist/assets/owl.carousel.min.css';
-// import 'owl.carousel/dist/assets/owl.theme.default.min.css';
 import './styleUser.css';
 import './index.js';
 import arrowBack from './img/setaVolta.png';
@@ -25,8 +22,8 @@ import {
 
 function StructureUserPage(){
     
-    // const user  = JSON.parse(localStorage.getItem('Usuario'));
-    // const userName = user.nickname.split('"');
+    const user  = JSON.parse(localStorage.getItem('Usuario'));
+    const userName = user.nickname.split('"');
     const [ topFilms, setTopFilms ] = useState([]);
     const [ popularFilms, setPopularFilms ] = useState([]);
     const [ newFilms, setNewFilms ] = useState([]);
@@ -80,8 +77,7 @@ function StructureUserPage(){
                                 
                             </li>
                             <NAME_USER>
-                                joão
-                                {/* <p>{userName}</p> */}
+                                <p>{userName}</p>
                             </NAME_USER>
                         </ul>
                         

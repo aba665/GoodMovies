@@ -26,8 +26,7 @@ const APP_ROUTES = () => {
                     <Route path="/" element={<HomePage />}/> 
                     <Route path="/cadastro" element={<RegisterPage />}/> 
                     <Route path="/login" element= {<LoginPage />} /> 
-                    <Route path="/home" element={<UserPage />} />
-                    {/* <Private><UserPage /></Private>}  */}
+                    <Route path="/home" element={<Private><UserPage /></Private>} />
                 </Routes>
             </AuthProvider>
         </BrowserRouter>
