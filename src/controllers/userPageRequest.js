@@ -36,6 +36,14 @@ export function Recomendations(setRecomendation){
     }
     )
 }
+export function AboutMovie(setInfo, idMovie){
+    fetch(`https://api.themoviedb.org/3/movie/${idMovie}?api_key=${config.chave}&language=pt-BR`).then(doc => {
+        return doc.json()
+    }).then(data => {
+        setInfo(data)
+    }
+)
+}
 //
 export function LogOut(){
     localStorage.setItem('Usuario', null);

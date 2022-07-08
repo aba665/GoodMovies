@@ -1,5 +1,5 @@
 import imgUser from './img/round-account-button-with-user-inside_icon-icons.com_72596.png'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LogOut, NewFilms, PopularFilms, Recomendations, TopFilms } from "../../controllers/userPageRequest";
 import { useNavigate } from 'react-router-dom';
 // import OwlCarousel from 'react-owl-carousel';
@@ -22,38 +22,18 @@ import {
         MAIN, 
         NAME_USER, 
         } from "./structureUserStyled";
+import { AuthContext, AuthProvider } from '../../context/validateTokenContext';
 
 function StructureUserPage(){
     
     // const user  = JSON.parse(localStorage.getItem('Usuario'));
     // const userName = user.nickname.split('"');
+    const { setIdMovies } = useContext(AuthContext);
     const [ topFilms, setTopFilms ] = useState([]);
     const [ popularFilms, setPopularFilms ] = useState([]);
     const [ newFilms, setNewFilms ] = useState([]);
     const [ recomendation, setRecomendation ] = useState([]);
     const PATH = useNavigate();    
-
-    const options = {
-        responsive: {
-            0:{
-                items:1
-            },
-            600:{
-                items:3
-            },
-            1000:{
-                items:5
-            },
-        },
-        responsiveTwo: {
-            0:{
-                items:1
-            },
-            600:{
-                items:3
-        }
-    }
-    };
 
     function handleLog(){
         LogOut();
@@ -62,12 +42,19 @@ function StructureUserPage(){
         
     }
     
+    function handleMovie(movie){
+        let idMovie = movie.target.id;
+        setIdMovies(idMovie);
+        PATH('/infoMovie');
+    }
+
     useEffect(() => {
         TopFilms(setTopFilms);
         PopularFilms(setPopularFilms);
         NewFilms(setNewFilms);
         Recomendations(setRecomendation);
     }, []);
+
 
     return (
             <div>
@@ -126,7 +113,7 @@ function StructureUserPage(){
                                 if(index < 3){
                                    return <div  className="contetTopMovie" key={item.popularity}>
                                             
-                                                <img className="itemFirst" src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
+                                                <img className="itemFirst" src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} id={item.id} onClick={handleMovie}/>
                                                 <h3>{item.title}</h3>
                                                 <p>Popularidade: {item.popularity}</p>
                                                 <p>{item.overview}</p>
@@ -153,7 +140,7 @@ function StructureUserPage(){
                                 {popularFilms && popularFilms.map((item, index) => {
                                     if(index < 20){
                                     return <div key={item.popularity}>
-                                            <img className='itemTwo' src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
+                                            <img className='itemTwo' src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} id={item.id} onClick={handleMovie} />
                                             <h3>{item.title}</h3>
                                             <p>Popularidade: {item.popularity}</p>
                                             <p>{item.overview}</p>
@@ -182,7 +169,7 @@ function StructureUserPage(){
                                         {newFilms && newFilms.map((item, index) => {
                                             if(index < 20){
                                             return <div className='selectionMovie' key={item.popularity}>
-                                                        <img className='item' src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
+                                                        <img className='item' src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}  id={item.id} onClick={handleMovie} />
                                                         <h3>{item.title}</h3>
                                                         <p>Popularidade: {item.popularity}</ p>
                                                         <p>{item.overview}</p>

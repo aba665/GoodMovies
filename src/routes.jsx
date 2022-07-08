@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage/index';
 import LoginPage from './pages/LoginPage/index';
 import RegisterPage from './pages/RegisterPage/index'; 
 import UserPage from './pages/UserPage/UserPage';
+import MoviePage from './pages/MoviePage/index';
 
 
 const APP_ROUTES = () => {
@@ -26,7 +27,8 @@ const APP_ROUTES = () => {
                     <Route path="/" element={<HomePage />}/> 
                     <Route path="/cadastro" element={<RegisterPage />}/> 
                     <Route path="/login" element= {<LoginPage />} /> 
-                    <Route path="/home" element={<UserPage />} />
+                    <Route path="/home" element={<Private><UserPage /></Private>} />
+                    <Route path='/infoMovie' element={<Private><MoviePage /></Private>} />
                     {/* <Private><UserPage /></Private>}  */}
                 </Routes>
             </AuthProvider>

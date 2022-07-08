@@ -62,6 +62,8 @@ export const BOX_MENU = styled.div`
 export const MAIN = styled.main`
     width: 100%;
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: space-around;
 
     section{
