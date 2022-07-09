@@ -96,7 +96,7 @@ export const CARD_SUGEST = styled.section`
     &:hover li{
         cursor: pointer;
     }
-    @media(max-width: 916px){
+    @media(max-width: 1076px){
       display: none;
     }
 `

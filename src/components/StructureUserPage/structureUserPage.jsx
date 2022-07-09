@@ -127,7 +127,7 @@ function StructureUserPage(){
                                                 <h3>{item.title}</h3>
                                                 <p>Popularidade: {item.popularity}</p>
                                                 <p>{item.overview}</p>
-                                                <button onClick={handleFavorite} id={item.id}>Favoritar</button>
+                                                <button onClick={handleFavorite} id={item.id} className="btnFavorite">Favoritar</button>
 
                                             
                                         </div>   
@@ -154,7 +154,7 @@ function StructureUserPage(){
                                             <h3>{item.title}</h3>
                                             <p>Popularidade: {item.popularity}</p>
                                             <p>{item.overview}</p>
-                                            <button onClick={handleFavorite} id={item.id}>Favoritar</button>
+                                            <button onClick={handleFavorite} id={item.id} className="btnFavorite">Favoritar</button>
                                         </div>
                                     }
                                         })
@@ -183,7 +183,7 @@ function StructureUserPage(){
                                                         <h3>{item.title}</h3>
                                                         <p>Popularidade: {item.popularity}</p>
                                                         <p>{item.overview}</p>
-                                                        <button onClick={handleFavorite} id={item.id}>Favoritar</button>
+                                                        <button onClick={handleFavorite} id={item.id} className="btnFavorite">Favoritar</button>
                                                     </div>
                                             }
                                         })}

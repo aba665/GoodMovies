@@ -39,7 +39,7 @@ export const Film = styled.img`
     }
     @media(max-width: 762px){
         
-        width: 15vh;
+        width: 20vh;
         height: 15vh;
         margin: auto;
         

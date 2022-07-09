@@ -132,7 +132,16 @@
 .item:hover{
     cursor: pointer;
 }
-
+.btnFavorite{
+    padding: 3px 10px;
+    border-radius: 2px;
+    background: #333;
+    color: white;
+}
+.btnFavorite:hover{
+    cursor: pointer;
+    background: rgb(83, 83, 83);
+}
 @media(max-width: 996px){
     .cardTopMovies{
         flex-direction: column;
