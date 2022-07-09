@@ -36,14 +36,19 @@ export function Recomendations(setRecomendation){
     }
     )
 }
-export function AboutMovie(setInfo, idMovie){
-    fetch(`https://api.themoviedb.org/3/movie/${idMovie}?api_key=${config.chave}&language=pt-BR`).then(doc => {
+export async function AboutMovie(setInfo, idMovie){
+    let allData;
+    await fetch(`https://api.themoviedb.org/3/movie/${idMovie}?api_key=${config.chave}&language=pt-BR`).then(doc => {
         return doc.json()
     }).then(data => {
+        allData = data;
         setInfo(data)
     }
-)
+    )
+
+    return allData;
 }
+
 //
 export function LogOut(){
     localStorage.setItem('Usuario', null);
