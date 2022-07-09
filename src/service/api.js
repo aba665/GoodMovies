@@ -64,7 +64,7 @@ export function useLoginUser(email, password, token, setToken, setUserVerificate
             }
         
         
-            return fetch(API + 'user/login', OPTIONS).then(data => {
+            return fetch(API + '/user/login', OPTIONS).then(data => {
                     return data.json();
                 }).then((doc) => {
                 
@@ -112,5 +112,29 @@ export async function getData(){
     })
     
     return user;
+
+}
+
+export async function FavoriteMovie(name, description, urlImg){
+    let fullUser = JSON.parse(localStorage.getItem('Usuario'));
+    let token = localStorage.getItem('Token');
+
+    const OPTIONS = {
+        method: "PUT",
+        headers: new Headers({'content-type':  'application/json'}),
+        body: JSON.stringify(
+                {
+                    email: fullUser.email,
+                    name,
+                    description,
+                    urlImg,
+                    Authorization: token
+                }
+            )
+    }
+
+    await fetch(API + '/movies/favorite', OPTIONS).then(data => {
+        return data.json();
+    });
 
 }

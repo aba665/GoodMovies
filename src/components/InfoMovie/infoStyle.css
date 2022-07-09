@@ -1,0 +1,49 @@
+main{
+    width: 80vw;
+    margin: 10px auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+section{
+    padding: 20px;
+}
+/* .information{
+    background: #333;
+} */
+.information div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
+.information img{
+    width: 54vw;
+    height: 40vw;
+    margin: auto;
+
+}
+.information p{
+    width: 80%;
+    margin: 4px 0;
+    font-size: 1.2rem;
+}
+.comments, .newComments{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.newComments button{
+   max-width: 120px;
+   background: #333;
+   color: #fff;
+   padding: 6px;
+}
+.newComments textarea{
+    background: #333;
+    color:#fff;
+    margin: 5px 0;
+}
+
+

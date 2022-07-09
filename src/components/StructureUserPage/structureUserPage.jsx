@@ -1,14 +1,10 @@
-import imgUser from './img/round-account-button-with-user-inside_icon-icons.com_72596.png'
-import { useEffect, useState } from "react";
-import { LogOut, NewFilms, PopularFilms, Recomendations, TopFilms } from "../../controllers/userPageRequest";
+import { useContext, useEffect, useState } from "react";
+import { AboutMovie, LogOut, NewFilms, PopularFilms, Recomendations, TopFilms } from "../../controllers/userPageRequest";
 import { useNavigate } from 'react-router-dom';
+import { AuthContext, AuthProvider } from '../../context/validateTokenContext';
+
 import './styleUser.css';
 import './index.js';
-import arrowBack from './img/setaVolta.png';
-import arrowForward from './img/setaFrente.png';
-
-
-
 import {
         BOXUSER,
         BOX_MENU,
@@ -20,37 +16,22 @@ import {
         NAME_USER, 
         } from "./structureUserStyled";
 
+import imgUser from './img/round-account-button-with-user-inside_icon-icons.com_72596.png';
+import arrowBack from './img/setaVolta.png';
+import arrowForward from './img/setaFrente.png';
+import { FavoriteMovie } from "../../service/api";
+
 function StructureUserPage(){
     
     const user  = JSON.parse(localStorage.getItem('Usuario'));
     const userName = user.nickname.split('"');
+    const { setIdMovies } = useContext(AuthContext);
     const [ topFilms, setTopFilms ] = useState([]);
     const [ popularFilms, setPopularFilms ] = useState([]);
     const [ newFilms, setNewFilms ] = useState([]);
     const [ recomendation, setRecomendation ] = useState([]);
+    const [ aboutFavorite, setAboutFavorite ] = useState([]);
     const PATH = useNavigate();    
-
-    const options = {
-        responsive: {
-            0:{
-                items:1
-            },
-            600:{
-                items:3
-            },
-            1000:{
-                items:5
-            },
-        },
-        responsiveTwo: {
-            0:{
-                items:1
-            },
-            600:{
-                items:3
-        }
-    }
-    };
 
     function handleLog(){
         LogOut();
@@ -59,12 +40,32 @@ function StructureUserPage(){
         
     }
     
+    async function handleFavorite(event){
+        let idMovie = event.target.id;
+        console.log(idMovie);
+        let allData = await AboutMovie(setAboutFavorite, idMovie);
+        let name = aboutFavorite.title;
+        let description = aboutFavorite.overview;
+        let urlImg = `https://image.tmdb.org/t/p/w500${aboutFavorite.poster_path}`
+
+        FavoriteMovie(name, description, urlImg);
+        
+     
+    }
+
+    function handleMovie(movie){
+        let idMovie = movie.target.id;
+        setIdMovies(idMovie);
+        PATH('/infoMovie');
+    }
+
     useEffect(() => {
         TopFilms(setTopFilms);
         PopularFilms(setPopularFilms);
         NewFilms(setNewFilms);
         Recomendations(setRecomendation);
     }, []);
+
 
     return (
             <div>
@@ -122,11 +123,11 @@ function StructureUserPage(){
                                 if(index < 3){
                                    return <div  className="contetTopMovie" key={item.popularity}>
                                             
-                                                <img className="itemFirst" src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
+                                                <img className="itemFirst" src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} id={item.id} onClick={handleMovie}/>
                                                 <h3>{item.title}</h3>
                                                 <p>Popularidade: {item.popularity}</p>
                                                 <p>{item.overview}</p>
-                                                <button onClick={()=>{}}>Favoritar</button>
+                                                <button onClick={handleFavorite} id={item.id} className="btnFavorite">Favoritar</button>
 
                                             
                                         </div>   
@@ -149,11 +150,11 @@ function StructureUserPage(){
                                 {popularFilms && popularFilms.map((item, index) => {
                                     if(index < 20){
                                     return <div key={item.popularity}>
-                                            <img className='itemTwo' src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
+                                            <img className='itemTwo' src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} id={item.id} onClick={handleMovie} />
                                             <h3>{item.title}</h3>
                                             <p>Popularidade: {item.popularity}</p>
                                             <p>{item.overview}</p>
-                                            <button onClick={()=>{}}>Favoritar</button>
+                                            <button onClick={handleFavorite} id={item.id} className="btnFavorite">Favoritar</button>
                                         </div>
                                     }
                                         })
@@ -178,11 +179,11 @@ function StructureUserPage(){
                                         {newFilms && newFilms.map((item, index) => {
                                             if(index < 20){
                                             return <div className='selectionMovie' key={item.popularity}>
-                                                        <img className='item' src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
+                                                        <img className='item' src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}  id={item.id} onClick={handleMovie} />
                                                         <h3>{item.title}</h3>
-                                                        <p>Popularidade: {item.popularity}</ p>
+                                                        <p>Popularidade: {item.popularity}</p>
                                                         <p>{item.overview}</p>
-                                                        <button onClick={()=>{}}>Favoritar</    button>
+                                                        <button onClick={handleFavorite} id={item.id} className="btnFavorite">Favoritar</button>
                                                     </div>
                                             }
                                         })}

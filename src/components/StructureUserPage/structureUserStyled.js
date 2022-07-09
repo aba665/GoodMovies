@@ -62,6 +62,8 @@ export const BOX_MENU = styled.div`
 export const MAIN = styled.main`
     width: 100%;
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: space-around;
 
     section{
@@ -94,7 +96,7 @@ export const CARD_SUGEST = styled.section`
     &:hover li{
         cursor: pointer;
     }
-    @media(max-width: 916px){
+    @media(max-width: 1076px){
       display: none;
     }
 `
