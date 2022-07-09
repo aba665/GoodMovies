@@ -64,7 +64,7 @@ export function useLoginUser(email, password, token, setToken, setUserVerificate
             }
         
         
-            return fetch(API + '/user/login', OPTIONS).then(data => {
+            return fetch(API + 'user/login', OPTIONS).then(data => {
                     return data.json();
                 }).then((doc) => {
                 
@@ -133,7 +133,7 @@ export async function FavoriteMovie(name, description, urlImg){
             )
     }
 
-    await fetch(API + '/movies/favorite', OPTIONS).then(data => {
+    await fetch(API + 'movies/favorite', OPTIONS).then(data => {
         return data.json();
     });
 
