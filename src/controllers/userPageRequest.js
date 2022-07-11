@@ -49,6 +49,19 @@ export async function AboutMovie(setInfo, idMovie){
     return allData;
 }
 
+export async function listMovies(setInfo, idMovie){
+    let allData;
+    await fetch(`https://api.themoviedb.org/3/movie/${idMovie}/similar?api_key=${config.chave}&language=pt-BR`).then(doc => {
+        return doc.json()
+    }).then(data => {
+        allData = data;
+        setInfo(data)
+    }
+    )
+
+    return allData;
+}
+
 //
 export function LogOut(){
     localStorage.setItem('Usuario', null);

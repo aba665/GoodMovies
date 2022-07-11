@@ -8,9 +8,9 @@ main{
 section{
     padding: 20px;
 }
-/* .information{
-    background: #333;
-} */
+.information{
+    background: #fff;
+}
 .information div{
     display: flex;
     flex-direction: column;
@@ -27,6 +27,9 @@ section{
     width: 80%;
     margin: 4px 0;
     font-size: 1.2rem;
+}
+.comments{
+    background: #fff;
 }
 .comments, .newComments{
     display: flex;

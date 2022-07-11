@@ -64,7 +64,7 @@ export function useLoginUser(email, password, token, setToken, setUserVerificate
             }
         
         
-            return fetch(API + '/user/login', OPTIONS).then(data => {
+            return fetch(API + 'user/login', OPTIONS).then(data => {
                     return data.json();
                 }).then((doc) => {
                 
@@ -133,8 +133,31 @@ export async function FavoriteMovie(name, description, urlImg){
             )
     }
 
-    await fetch(API + '/movies/favorite', OPTIONS).then(data => {
+    await fetch(API + 'movies/favorite', OPTIONS).then(data => {
         return data.json();
     });
 
+}
+
+export async function AllFavoriteMovie(){
+    let fullUser = JSON.parse(localStorage.getItem('Usuario'));
+    let token = localStorage.getItem('Token');
+    let allData;
+    const OPTIONS = {
+        method: "POST",
+        headers: new Headers({'content-type':  'application/json'}),
+        body: JSON.stringify(
+                {
+                    email: fullUser.email,
+                    Authorization: token
+                }
+            )
+    }
+
+    await fetch(API + 'movies/favorite/show', OPTIONS).then(data => {
+        return data.json();
+    }).then((doc) => {
+        allData = doc;
+    })
+    return allData;
 }

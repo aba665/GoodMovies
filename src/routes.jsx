@@ -8,7 +8,8 @@ import LoginPage from './pages/LoginPage/index';
 import RegisterPage from './pages/RegisterPage/index'; 
 import UserPage from './pages/UserPage/UserPage';
 import MoviePage from './pages/MoviePage/index';
-
+import FavoritePage from './pages/FavoritePage/index';
+import ListPage from './pages/ListPage/listPage';
 
 const APP_ROUTES = () => {
 
@@ -29,7 +30,8 @@ const APP_ROUTES = () => {
                     <Route path="/login" element= {<LoginPage />} /> 
                     <Route path="/home" element={<Private><UserPage /></Private>} />
                     <Route path='/infoMovie' element={<Private><MoviePage /></Private>} />
-                    {/* <Private><UserPage /></Private>}  */}
+                    <Route path='/favoriteMovie' element={<Private><FavoritePage /></Private>} />
+                    <Route path='/listMovie' element={<Private><ListPage /></Private>} />
                 </Routes>
             </AuthProvider>
         </BrowserRouter>

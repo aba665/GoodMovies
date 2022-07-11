@@ -1,20 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { AboutMovie, LogOut, NewFilms, PopularFilms, Recomendations, TopFilms } from "../../controllers/userPageRequest";
 import { useNavigate } from 'react-router-dom';
-import { AuthContext, AuthProvider } from '../../context/validateTokenContext';
+import { AuthContext } from '../../context/validateTokenContext';
 
 import './styleUser.css';
 import './index.js';
-import {
-        BOXUSER,
-        BOX_MENU,
-        CARD_SUGEST,  
-        CATEGORY_OPTIONS, 
-        CONFIG_OPTIONS,    
-        HEADER, 
-        MAIN, 
-        NAME_USER, 
-        } from "./structureUserStyled";
+import {BOXUSER,BOX_MENU,CARD_SUGEST,CATEGORY_OPTIONS,CONFIG_OPTIONS,HEADER,MAIN,NAME_USER} from "./structureUserStyled";
 
 import imgUser from './img/round-account-button-with-user-inside_icon-icons.com_72596.png';
 import arrowBack from './img/setaVolta.png';
@@ -26,6 +17,7 @@ function StructureUserPage(){
     const user  = JSON.parse(localStorage.getItem('Usuario'));
     const userName = user.nickname.split('"');
     const { setIdMovies } = useContext(AuthContext);
+    const { setIdCategory } = useContext(AuthContext);
     const [ topFilms, setTopFilms ] = useState([]);
     const [ popularFilms, setPopularFilms ] = useState([]);
     const [ newFilms, setNewFilms ] = useState([]);
@@ -37,7 +29,10 @@ function StructureUserPage(){
         LogOut();
 
         PATH('/')
-        
+
+        setTimeout(() => {
+            window.location.reload(false);
+        }, 1000);
     }
     
     async function handleFavorite(event){
@@ -49,8 +44,6 @@ function StructureUserPage(){
         let urlImg = `https://image.tmdb.org/t/p/w500${aboutFavorite.poster_path}`
 
         FavoriteMovie(name, description, urlImg);
-        
-     
     }
 
     function handleMovie(movie){
@@ -59,13 +52,22 @@ function StructureUserPage(){
         PATH('/infoMovie');
     }
 
+    async function handleCategory(event){
+        let idMovie = event.target.id;
+        await setIdCategory(idMovie);
+        PATH('/listMovie');
+    }
+
+    function handleFavoritePage(){
+        PATH('/favoriteMovie');
+    }
+
     useEffect(() => {
         TopFilms(setTopFilms);
         PopularFilms(setPopularFilms);
         NewFilms(setNewFilms);
         Recomendations(setRecomendation);
     }, []);
-
 
     return (
             <div>
@@ -85,13 +87,13 @@ function StructureUserPage(){
                     </BOXUSER>
                     <BOX_MENU>
                         <ul>
-                            <li>
-                                <a href="#">Favoritos</a>
-                            </li>
+                            <li onClick={handleFavoritePage}>Favoritos</li>
                             <CATEGORY_OPTIONS>Categorias
                                 <ul>
-                                    <li>Ação</li>
-                                    <li>Terror</li>
+                                    <li id="616037" onClick={handleCategory}>Ação</li>
+                                    <li id="14564" onClick={handleCategory}>Terror</li>
+                                    <li id="11845" onClick={handleCategory}>Romance</li>
+                                    <li id="668640" onClick={handleCategory}>Comédia</li>
                                 </ul>
                             </CATEGORY_OPTIONS>
                             <CONFIG_OPTIONS>Configurações
