@@ -57,3 +57,9 @@ export const BTNFAVORITE = styled.button`
         cursor: pointer;
     }
 `
+export const PARAGRAPH = styled.p`
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+`

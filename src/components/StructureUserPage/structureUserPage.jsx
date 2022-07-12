@@ -22,7 +22,6 @@ function StructureUserPage(){
     const [ popularFilms, setPopularFilms ] = useState([]);
     const [ newFilms, setNewFilms ] = useState([]);
     const [ recomendation, setRecomendation ] = useState([]);
-    const [ aboutFavorite, setAboutFavorite ] = useState([]);
     const PATH = useNavigate();    
 
     function handleLog(){
@@ -37,13 +36,22 @@ function StructureUserPage(){
     
     async function handleFavorite(event){
         let idMovie = event.target.id;
-        console.log(idMovie);
-        let allData = await AboutMovie(setAboutFavorite, idMovie);
-        let name = aboutFavorite.title;
-        let description = aboutFavorite.overview;
-        let urlImg = `https://image.tmdb.org/t/p/w500${aboutFavorite.poster_path}`
+        let allData = await AboutMovie(idMovie);
+        let name = allData.title;
+        let description = allData.overview;
+        let urlImg = `https://image.tmdb.org/t/p/w500${allData.poster_path}`
 
-        FavoriteMovie(name, description, urlImg);
+        if(name && description && urlImg){
+            let result = await FavoriteMovie(name, description, urlImg);
+            console.log(result)
+            if(result === null){
+                return alert('Este filme já está na sua lista de filmes favoritos!');
+            }else if(result === undefined){
+                alert("Filme adicionado aos favoritos!");
+            }
+        }else{
+            alert("Filme não adicionado, tente novamente!");   
+        }
     }
 
     function handleMovie(movie){

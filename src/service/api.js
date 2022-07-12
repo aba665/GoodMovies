@@ -68,17 +68,13 @@ export function useLoginUser(email, password, token, setToken, setUserVerificate
                     return data.json();
                 }).then((doc) => {
                 
-                setterToken(doc);
-                setterUserVerificated(doc);
-                localStorage.setItem('Usuario', JSON.stringify({id: doc.user.id, email: doc.user.email, nickname: doc.user.nickname}));
-                localStorage.setItem('Token', doc.token);
+                if(doc != null){
+                    setterToken(doc);
+                    setterUserVerificated(doc);
+                    localStorage.setItem('Usuario', JSON.stringify({id: doc.user.id, email: doc.user.email, nickname: doc.user.nickname}));
+                    localStorage.setItem('Token', doc.token);
+                }    
                 
-                if(doc.token){
-                   console.log('indo para página de usuario');
-                
-                }else{
-                    console.log('Algo não deu certo!');
-                }
             })
 
         }
@@ -118,6 +114,7 @@ export async function getData(){
 export async function FavoriteMovie(name, description, urlImg){
     let fullUser = JSON.parse(localStorage.getItem('Usuario'));
     let token = localStorage.getItem('Token');
+    let allData;
 
     const OPTIONS = {
         method: "PUT",
@@ -135,8 +132,11 @@ export async function FavoriteMovie(name, description, urlImg){
 
     await fetch(API + 'movies/favorite', OPTIONS).then(data => {
         return data.json();
-    });
-
+    }).then((doc) => {
+        allData = doc.resultado;
+    }
+    );
+    return allData
 }
 
 export async function AllFavoriteMovie(){
@@ -158,6 +158,7 @@ export async function AllFavoriteMovie(){
         return data.json();
     }).then((doc) => {
         allData = doc;
+        
     })
     return allData;
 }
