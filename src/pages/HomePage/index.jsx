@@ -7,6 +7,7 @@ import '../../components/StructureUserPage/styleUser.css';
 import NavBar from '../../components/Nav/navBar';
 import CardCategory from '../../components/CardCategory/cardCategory';
 import RodapeCreation from '../../components/Footer/footerHome';
+import ModalAlert from '../../components/AlertModal/alertModal';
 import '../../components/StructureUserPage/index';
 //Importações de imagens
 import arrowBack from '../../components/StructureUserPage/img/setaVolta.png';
@@ -15,10 +16,19 @@ import star from '../../components/StructureUserPage/img/starflat_105977.png';
 
 function HomePage(){
     const [ newFilms, setNewFilms ] = useState([]);
+    const [ teste, setTeste ] = useState(false);
+    const title = 'Você precisa fazer login para fovoritar um filme!';
     useEffect(() => {
         userRequest.NewFilms(setNewFilms);
-    }, []);
+    }, []);    
     
+    function showModal(){
+        setTeste(true);
+        setTimeout(() => {
+            setTeste(false);
+        }, 5000);
+    }
+
     return (
         <div>
             <NavBar />
@@ -31,7 +41,8 @@ function HomePage(){
                 arrowForward={arrowForward} 
                 Films={newFilms} 
                 star={star} 
-                handleFavorite={()=>{alert('Precisa fazer login para fovoritar um filme')}} />
+                handleFavorite={showModal} />
+                {teste && <ModalAlert title={title} showHide='hide'/>}
             <Container>
                 <h2>Sobre:</h2>
                 <p>
