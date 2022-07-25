@@ -1,11 +1,11 @@
 import User from '../../components/StructureUserPage/structureUserPage'; 
-import RodapeCreation from '../../components/Rodape/rodapeHome';
+import FooterCreation from '../../components/Footer/footerHome';
 
 function userPage(){
     return (
         <>
             <User />
-            <RodapeCreation />
+            <FooterCreation />
         </>
     )
 }

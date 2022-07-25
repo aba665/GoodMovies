@@ -2,10 +2,9 @@ import React , { useState } from 'react';
 import { createUser } from '../../service/api';
 import { useNavigate } from 'react-router-dom';
 import { CONTAINER, CONTENT } from "../StructureLogin/structureStyled";
-import ReturnLogin from '../Message/returnLogin';
+import ReturnLogin from '../AlertModal/alertModal';
 
 function StructureRegister(){
-    
     const [ redirection, setRedirection ] = useState(false);     
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
@@ -16,7 +15,6 @@ function StructureRegister(){
     const path = useNavigate();
 
     async function handlerData(){
-        
         if(!email || !password || !name || !age){
             return alert("Você deve preencher todos os campos!");
         }
@@ -44,7 +42,7 @@ function StructureRegister(){
     if(redirection){
         return path('/login');
     }
-    
+
     return (
         <CONTAINER>
             <CONTENT>
@@ -62,18 +60,12 @@ function StructureRegister(){
                 <button type='submit' onClick={handlerData}>Registrar</button>
 
                 {loading && (
-                     
-                     <>
-                        <ReturnLogin />
-                     </>
-                     
+                    <>
+                        <ReturnLogin title='Usúario criado com sucesso!' firstButton='Login' secondButton='Home'/>
+                    </>                      
                  )}
             </CONTENT>
-
-                
-        </CONTAINER>
-
-        
+        </CONTAINER> 
     )
 }
 

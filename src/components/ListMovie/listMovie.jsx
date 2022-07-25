@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useState, useEffect } from 'react';
 import { AuthContext } from '../../context/validateTokenContext';
-import { listMovies } from '../../controllers/userPageRequest';
+import userRequest from '../../controllers/userPageRequest';
 import { SUBCATEGORY, CONTAINER, GALLERYITEM, GALLERYITEMINFO, BTNFAVORITE } from '../StructureFavoritePage/favoriteStyled';
 
 function ListMovie(){
@@ -9,10 +9,9 @@ function ListMovie(){
     const [ movieList, setMovieList ] = useState([]);
     let allData;
     let arrayData = [];
-    
-    
+
     async function handleData(){
-        allData = await listMovies(setMovieList, idCategory);
+        allData = await userRequest.listMovies(setMovieList, idCategory);
         arrayData = allData.results;
         setMovieList(arrayData);
     }

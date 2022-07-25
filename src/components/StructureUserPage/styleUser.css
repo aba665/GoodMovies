@@ -8,13 +8,16 @@
 .contetTopMovie{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: flex-start; */
     background-color: #333;
     color: #fff;
     padding: 10px;
     
 }
-
+.centralization{
+    display: flex;
+    align-self: center;
+}
 .titleTopMovie{
     text-align: center;
     color: aliceblue;
@@ -133,6 +136,9 @@
     cursor: pointer;
 }
 .btnFavorite{
+    display: flex;
+    align-self: flex-start;
+    margin-top: 5px;
     padding: 3px 10px;
     border-radius: 2px;
     background: #333;
@@ -142,6 +148,13 @@
     cursor: pointer;
     background: rgb(83, 83, 83);
 }
+.rateItem{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    font-size: 1rem;
+}
+
 @media(max-width: 996px){
     .cardTopMovies{
         flex-direction: column;

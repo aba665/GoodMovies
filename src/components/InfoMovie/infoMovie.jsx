@@ -1,17 +1,17 @@
 import { useContext } from 'react';
 import { useEffect, useState } from 'react';
-import { AuthContext, AuthProvider } from '../../context/validateTokenContext';
-import { AboutMovie } from '../../controllers/userPageRequest';
+import { AuthContext } from '../../context/validateTokenContext';
+import userRequest from '../../controllers/userPageRequest';
 import './infoStyle.css';
 
 function InfoMovie(){
     const [ info, setInfo ] = useState([]);
     const { idMovies } = useContext(AuthContext);
     
-
     useEffect(()=>{
-        AboutMovie(setInfo, idMovies)
+        userRequest.AboutMovie(setInfo, idMovies)
     }, [])
+    
     return (
         <main>
             <section className="information">

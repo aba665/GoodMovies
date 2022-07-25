@@ -7,7 +7,7 @@ let allMovies;
 let currentItem = 0;
 
 let myInterval = setInterval(() => {
-    controls = document.querySelectorAll('.control');
+    controls = document.querySelectorAll('.controlTwo');
     items = document.querySelectorAll('.item');
     maxItems = items.length; 
     index =  document.querySelectorAll('.selectionMovie')[0]
@@ -60,15 +60,14 @@ let allMoviesTwo;
 let currentItemTwo = 0;
 
 let myIntervalTwo = setInterval(() => {
-    controlsTwo = document.querySelectorAll('.controlTwo');
+    controlsTwo = document.querySelectorAll('.control');
     itemsTwo = document.querySelectorAll('.itemTwo');
     maxItemsTwo = itemsTwo.length; 
-    // indexTwo =  document.querySelectorAll('.selectionMovie')[0]
-    // allMoviesTwo =  document.querySelectorAll('.selectionMovie')  
     
     if(controlsTwo && itemsTwo && maxItemsTwo){
         clearInterval(myInterval);  
         itemsTwo[0].classList.add('current-item');
+        
         controlsTwo.forEach((control) => {
             control.addEventListener('click', () => {
                const isLeftTwo = control.classList.contains('arrow-left-two');

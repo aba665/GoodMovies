@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.footer`
-    width: 85%;
+    width: 87%;
     margin: 4px auto;
     background-color: #fff;
     text-align: center;

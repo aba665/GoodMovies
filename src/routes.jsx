@@ -28,7 +28,7 @@ const APP_ROUTES = () => {
                     <Route path="/" element={<HomePage />}/> 
                     <Route path="/cadastro" element={<RegisterPage />}/> 
                     <Route path="/login" element= {<LoginPage />} /> 
-                    <Route path="/home" element={<Private><UserPage /></Private>} />
+                    <Route path="/home" element={<Private><UserPage /></Private>}/>
                     <Route path='/infoMovie' element={<Private><MoviePage /></Private>} />
                     <Route path='/favoriteMovie' element={<Private><FavoritePage /></Private>} />
                     <Route path='/listMovie' element={<Private><ListPage /></Private>} />

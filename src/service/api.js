@@ -154,7 +154,7 @@ export async function AllFavoriteMovie(){
             )
     }
 
-    await fetch(API + 'movies/favorite/show', OPTIONS).then(data => {
+    await fetch(API + '/movies/favorite/show', OPTIONS).then(data => {
         return data.json();
     }).then((doc) => {
         allData = doc;

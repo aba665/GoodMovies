@@ -1,12 +1,12 @@
 //Utilização do styled-components
-import { ContentImg,Box, Container } from './rodapestyled';
+import { ContentImg,Box, Container } from './footerStyled';
 //Importação das imagens do logo do rodapé
 import logoFb from '../../pages/HomePage/img/fb.png';
 import logoIst from '../../pages/HomePage/img/Instagram.png';
 import logoWz from '../../pages/HomePage/img/whatsapp.png';
 import logoEm from '../../pages/HomePage/img/email.png';
 
-function rodapeCreation(){
+function footerCreation(){
     return (
         <Container>
         <h2>Contatos</h2>
@@ -50,4 +50,4 @@ function rodapeCreation(){
     )
 }
 
-export default  rodapeCreation;
+export default footerCreation;
