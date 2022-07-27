@@ -26,14 +26,15 @@ export const createUser = async (email, password, name, nickname, age) => {
    return dataReceive; 
 };
 //Função de login e autenticação
-export function useLoginUser(email, password, token, setToken, setUserVerificated){
+export async function useLoginUser(email, password, token, setToken, setUserVerificated, setTitle){
     token = localStorage.getItem('Token');
     if(password.length < 4){
-        return alert('Erro! Password deve conter mais de 4 caracteres!')
+        return setTitle('Password deve conter mais de 4 caracteres!');
+        
     }
-
-    if(email == undefined || password == undefined){
-        return alert('Erro! Preencha todos os dados corretamente!');
+  
+    if(email == undefined || password == undefined || email === ''){
+        return setTitle('Preencha todos os dados corretamente!');
     }else{
         
         const LoginUser = async () => {
@@ -73,10 +74,12 @@ export function useLoginUser(email, password, token, setToken, setUserVerificate
                     setterUserVerificated(doc);
                     localStorage.setItem('Usuario', JSON.stringify({id: doc.user.id, email: doc.user.email, nickname: doc.user.nickname}));
                     localStorage.setItem('Token', doc.token);
-                }    
-                
+                    }
+                    
+                    if(doc === null){
+                        setTitle('Usuário ou senha incorretos!');
+                    }
             })
-
         }
         
         LoginUser();
