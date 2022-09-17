@@ -12,13 +12,13 @@ Projeto foi criado com o intuito de criar uma página responsiva, com um designe
    * React
 ## Como o projeto ficou
 ### Área inicial do site
-![Área inicial do site]()
-### Área do usuário
-![Área do Usuário]()
+![Área inicial do site](https://github.com/aba665/GoodMovies/blob/main/public/Initial.png)
 ### Área de login
-![Área de login]()
+![Área de login](https://github.com/aba665/GoodMovies/blob/main/public/login.png)
 ### Área de cadastro
-![Área de cadastro]()
+![Área de cadastro](https://github.com/aba665/GoodMovies/blob/main/public/Register.png)
+### Área do usuário
+![Área do Usuário](https://github.com/aba665/GoodMovies/blob/main/public/projeto1.png)
 ## link do Projetinho 
 
  [Se quiser da uma olhada](https://goodmovies-frontend.herokuapp.com/)
